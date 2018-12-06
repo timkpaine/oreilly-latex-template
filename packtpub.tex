@@ -1,0 +1,771 @@
+
+\documentclass[a4paper,
+                             twoside,
+                             BCOR1.0cm,
+                             DIV11,
+                             parskip=full,
+                             11pt]{scrbook}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{xspace}
+\usepackage{bera}
+\usepackage{pifont}
+\usepackage{amssymb}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{graphicx}
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+\usepackage{color}
+
+%%%%%%%%%%%%
+
+\DeclareFixedFont{\numcap}{T1}{phv}{bx}{n}{3cm}
+\DeclareFixedFont{\textcap}{T1}{phv}{bx}{n}{1.5cm}
+\DeclareFixedFont{\textaut}{T1}{phv}{bx}{n}{0.8cm} 
+
+\addtokomafont{chapter}{\color{gray}\textcap}
+\addtokomafont{section}{\color{white}}
+\addtokomafont{subsection}{\color{white}}
+\setkomafont{pagehead}{\sffamily\small}
+\setkomafont{captionlabel}{\sffamily\small\bfseries}
+\setkomafont{caption}{\sffamily\small}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usetikzlibrary{calc,trees,positioning,arrows,chains,shapes.geometric,
+    decorations.pathreplacing,decorations.pathmorphing,shapes,
+    matrix,shapes.symbols}
+
+\tikzset{
+  punktchain/.style={
+    rectangle, 
+    rounded corners, 
+    draw=black!20, thin,
+    minimum height=3em, 
+    text centered},
+  peu/.style={
+    rectangle,
+    fill opacity=1,
+    %rounded corners, 
+    fill=white,
+    top color=white,
+    draw=black!20, thin,
+    %text width=10em, 
+    %minimum height=3em, 
+    text centered},
+  line/.style={draw, thin, <-},
+  element/.style={
+    tape,
+    top color=white,
+    bottom color=blue!50!black!60!,
+    minimum width=8em,
+    draw=blue!40!black!90, very thick,
+    text width=10em, 
+    minimum height=3.5em, 
+    text centered, 
+    on chain},
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{scrpage2}
+\setlength{\headheight}{25pt}
+\pagestyle{scrheadings}
+\setheadwidth{textwithmarginpar}
+\setheadsepline{.4pt}
+\addtokomafont{headsepline}{\color{lightgray}}
+
+\lefoot{\color{black!40}{\hrulefill}}
+\cefoot{\parbox[c][.5in][c]{1cm}{\fcolorbox{black!40}{white}{\thepage}}}
+\refoot{}
+
+\lofoot{\color{black!40}{\hrulefill}}
+\cofoot[{\color{black!40}{---}} {\thepage} {\color{black!40}{---}}]{\parbox[c][.5in][c]{1cm}{\fcolorbox{black!40}{white}{\thepage}}}
+\rofoot[]{}
+
+\usepackage[pdftex,             
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    citecolor=blue,
+    pdftitle={Llibre amb estil},
+    pdfauthor={Joan Queralt Gil},
+    pdfsubject={tema},
+    pdfkeywords={Keyword1, Keyword 2},
+    bookmarks, bookmarksnumbered=true]{hyperref}
+
+\tolerance=4000
+\emergencystretch=20pt
+
+\setcounter{secnumdepth}{3}
+\usepackage{titlesec}
+
+\titleformat{\chapter}[display]
+    {\usekomafont{sectioning} \usekomafont{chapter}\filleft}
+    {\numcap\textcolor[named]{gray}\thechapter}
+    {1em}
+    {}
+
+\titleformat{\section}[block]
+    {\usekomafont{sectioning}\usekomafont{section}
+     \tikz[overlay]  \fill[color=black,rounded corners=.2ex] (0,-1ex) rectangle (\textwidth-2cm,1em);}
+    { \thesection}
+    {1em}
+    {}
+
+\titleformat{\subsection}[block]
+    {\usekomafont{sectioning}\usekomafont{subsection}
+       \tikz[overlay] \fill[color=black!60] (0,-1ex) rectangle (\textwidth-2cm,1em);}
+    { \thesubsection}
+    {1em}
+    {}
+
+\usepackage{lipsum}
+%%%%%%%%%%%%%%%%%%%%
+\usepackage{enumitem}
+
+\newlist{steps}{enumerate}{4}
+\setlist[steps]{topsep=0pt,partopsep=0pt,itemsep=0pt,parsep=0pt,labelindent=0.5cm,leftmargin=*}
+\setlist[steps,1]{label*=\arabic*.}
+\setlist[steps,2]{label*=\arabic*.}
+\setlist[steps,3]{label*=\arabic*.}
+\setlist[steps,4]{label*=\arabic*.}
+
+\newlist{points}{itemize}{4}
+\setlist[points]{topsep=0pt,partopsep=0pt,itemsep=0pt,parsep=0pt,labelindent=0.5cm,leftmargin=*}
+\setlist[points,1]{label=\tiny\ding{110}}
+\setlist[points,2]{label=\tiny\ding{108}}
+\setlist[points,3]{label=\tiny\ding{72}}
+\setlist[points,4]{label=\tiny\ding{117}}
+
+\newlist{objectives}{itemize}{1}
+\setlist[objectives]{topsep=0pt,partopsep=0pt,itemsep=0pt,parsep=0pt,labelindent=0.5cm,leftmargin=*}
+\setlist[objectives,1]{label=\tiny$\blacktriangleright$}
+
+\newlist{attention}{itemize}{1}
+\setlist[attention]{topsep=0pt,partopsep=0pt,itemsep=0pt,parsep=0pt,labelindent=0.5cm,leftmargin=*}
+\setlist[attention,1]{label=\ding{224}}
+
+
+\newlist{arrows}{itemize}{4}
+\setlist[arrows]{topsep=0pt,partopsep=0pt,itemsep=0pt,parsep=0pt,labelindent=0.5cm,leftmargin=*}
+\setlist[arrows,1]{label=\tiny\ding{252}}
+\setlist[arrows,2]{label=\tiny\ding{212}}
+\setlist[arrows,3]{label=\tiny\ding{232}}
+\setlist[arrows,4]{label=\tiny\ding{217}}
+%%%%%%%%%%%%%%%%%%%%
+\usepackage[tikz]{bclogo}
+\newcommand\novaimatge{\includegraphics[width=14pt]{escriu}}
+\renewcommand\logowidth{14pt}
+
+\usepackage{colortbl}
+\arrayrulecolor{gray}
+\let\shline\hline
+\def\hline{\noalign{\vskip3pt}\shline\noalign{\vskip4pt}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%% First Page
+\title{\textcap{Latex Template}}
+\author{
+    \textaut{Joan Queralt Gil}\\http://phobos.xtec.cat/jqueralt
+}
+\date{\today}
+
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%
+\tableofcontents
+
+%*************************************************************************
+\chapter{Format of chapters}\label{cap:primer}
+%*************************************************************************
+\dictum%
+[Timothy K. Paine]%author
+{Find an interesting quote, \dots
+} %text
+
+This entry, which is located on the right side of the page, is called \textit {Sentence} and is obtained with the command
+ \verb+\dictum[author]{text}+.
+%*************************************************************************
+\section{Titles}\label{sec:titles}
+%*************************************************************************
+The package \verb+titlesec+ has been used to finish formatting section headings. The command that allows us to do so is:
+\begin{scriptsize}
+\begin{verbatim}
+\titleformat{command}[shape]%
+  {format}%
+  {label}%
+  {sep}% horizontal separation between label and body of the title
+  {before}[after]% precedent / next code in the title body
+ 
+
+\end{verbatim}
+\end{scriptsize}
+
+%*******************
+\subsection{Chapter Titles}\label{sbsec:captit}
+%*******************
+The chapters begin with the number and the name in gray letter, which is obtained with the command:
+\begin{scriptsize}
+\begin{verbatim}
+\addtokomafont{chapter}{\color{gray}\textcap}   % gives size to the title of the document
+\end{verbatim}
+\end{scriptsize}
+The font is Helvetica and of different size, the number (\verb+\numcap+) of 3 cm and the text (\verb+\textcap+) of 1.5 cm, format that is obtained with the initial definition:
+
+\begin{scriptsize}
+\begin{verbatim}
+\DeclareFixedFont{\numcap}{T1}{phv}{bx}{n}{3cm}   %creates big chapter tag numbers
+\DeclareFixedFont{\textcap}{T1}{phv}{bx}{n}{1.5cm} %create big letters name of the chapter
+\end{verbatim}
+\end{scriptsize}
+The package \verb+titlesec+ has been used to finish formatting section headings. Specifically for the chapters is defined:
+\begin{scriptsize}
+\begin{verbatim}
+ \titleformat{\chapter}[display]%              
+    {\usekomafont{sectioning} \usekomafont{chapter}\filleft}% 
+                     %formata segons les definicions de KOMA i alinea dreta
+    {\numcap\textcolor[named]{gray}\thechapter}%                   
+                     % formata el numero de capitol de color
+    {1em}%
+    {}
+\end{verbatim}
+\end{scriptsize}
+
+%*******************
+\subsection{Títols de secció}\label{sbsec:titsec}
+%*******************
+Els títols de secció tenen el text blanc sobre un fons de color, el color s'obté amb el comandament:
+\begin{scriptsize}
+\begin{verbatim}
+\addtokomafont{section}{\color{white}}
+\end{verbatim}
+\end{scriptsize}
+i el color de fons negre s'aconsegueix amb l'esmentat paquet \verb+titlesec+ i l'ús d'una imatge de fons generada pel paquet \verb+\tikz+:
+\begin{tiny}
+\begin{verbatim}
+\titleformat{\section}[block]%              
+    {\usekomafont{sectioning}\usekomafont{section}% 
+     \tikz[overlay]  \fill[color=black,rounded corners=.2ex] (0,-1ex) rectangle (\textwidth-2cm,1em);}%  
+    { \thesection}%                   
+    {1em}%
+    {}
+\end{verbatim}
+\end{tiny}
+
+
+%*******************
+\subsection{Títols de subsecció}\label{sbsec:titsubsec}
+%*******************
+Els títols de subsecció tenen el text blanc sobre un fons de color, el color del text, com en el cas de les seccions,  s'obté amb el comandament:
+\begin{scriptsize}
+\begin{verbatim}
+\addtokomafont{subsection}{\color{white}}
+\end{verbatim}
+\end{scriptsize}
+i el color de fons negre s'aconsegueix amb l'esmentat paquet \verb+titlesec+ i l'ús d'una imatge de fons generada pel paquet \verb+\tikz+:
+\begin{tiny}
+\begin{verbatim}
+\titleformat{\subsection}[block]%              
+    {\usekomafont{sectioning}\usekomafont{subsection}% 
+       \tikz[overlay] \fill[color=black!60] (0,-1ex) rectangle (\textwidth-2cm,1em);}%  
+    {\thesubsection}%                   
+    {1em}%
+    {}
+\end{verbatim}
+\end{tiny}
+
+%*************************************************************************
+\section{Estil de pàgina} \label{sec:estilspag}
+%*************************************************************************
+Les pàgines utilitzen l'estil \verb+scrheadings+ definit per KOMA i personalitzat de manera que:
+\begin{objectives}%[labelindent=20pt,leftmargin=*]
+\item  L'encapçalament consisteixi en el nom de capítol a la pàgina esquerra i secció a la pàgina dreta, amb lletra petita sans serif de color negre subratllat amb una línia grisa que sobrepassa per fora l'amplada del text.
+\item  El peu consisteix en el número de pàgina centrat i dins un requadre de color gris que queda per sobre d'una línia gris que va de banda a banda del text.
+\end{objectives}
+Això s'aconsegueix amb l'ús del paquet \verb+scrpage2+ del conjunt KOMA on es defineix:
+\begin{tiny}
+\begin{verbatim}
+\setlength{\headheight}{25pt}	      		   
+\pagestyle{scrheadings}			         % estil de pàgina
+\setheadwidth{textwithmarginpar}	    	% allarga l'encapçalament
+\setheadsepline{.4pt}					%línia sota la capçalera
+\addtokomafont{headsepline}{\color{lightgray}}% dóna color gris línia sota capçalera
+%peus pàgina esquerra:
+\lefoot{\color{black!40}{\hrulefill}}
+\cefoot{\parbox[c][.5in][c]{1cm}{\fcolorbox{black!40}{white}{\thepage}}}
+\refoot{}
+\lofoot{\color{black!40}{\hrulefill}}
+\cofoot[{\color{black!40}{---}} {\thepage} {\color{black!40}{---}}]%
+     {\parbox[c][.5in][c]{1cm}{\fcolorbox{black!40}{white}{\thepage}}}
+\rofoot[]{}
+\end{verbatim}
+\end{tiny}
+Les pàgines d'inici de capítol, en estil \verb+plain+, estan definides en els comandaments anteriors com a opció del comandament corresponent, per exemple::
+
+\begin{scriptsize}\verb+\cfoot[estil scrplain ]{estil scrheadings}+\end{scriptsize}
+
+
+%*************************************************************************
+\chapter{Millores}\label{cap:millores}
+%*************************************************************************
+
+S'han utilitzat diferents paquets per aconseguir millores en diferents aspectes del cos del text. Per exemple, per les llistes el paquet \verb+enumitem+, per les taules el paquet \verb+colortbl+ o el paquet \verb+bclogo+ per les crides,  els detalls dels quals es veuran en les properes seccions.
+
+%*************************************************************************
+\section{Llistes}\label{sec:llistes}
+%*************************************************************************
+Amb el paquet \verb+enumitem+ podem definir nous estils de llistes amb el comandament:
+\begin{tiny}
+\begin{verbatim}
+\newlist{nomllista}{tipus=enumerate,itemize,description}{nº nivells de niament} 
+\setlist[nomllista]{format}
+\setlist[nomllista,1]{label=format etiqueta1}
+\end{verbatim}
+\end{tiny}
+
+En aquest document hem predifinit una sèrie de llistes que pensem poden ser d'utilitat.
+
+%*******************
+\subsection{Llistes numerades}\label{sbsec:llistnum}
+%*******************
+\subsubsection{Steps}\label{ssbsec:steps}
+%******
+Es tracta d'una llista compacta numerada en esquema (1. - 1.1 - 1.1.1 ) sagnada a l'esquerra 0.5 cm per indicar passos. El codi per obtenir-la és:
+\begin{tiny}
+\begin{verbatim}
+\newlist{steps}{enumerate}{4}
+\setlist[steps]{topsep=0pt,partopsep=0pt,itemsep=0pt,parsep=0pt,labelindent=0.5cm,leftmargin=*}
+\setlist[steps,1]{label*=\arabic*.}
+\setlist[steps,2]{label*=\arabic*.}
+\setlist[steps,3]{label*=\arabic*.}
+\setlist[steps,4]{label*=\arabic*.}
+\end{verbatim}
+\end{tiny}
+i el resultat aquest:
+\begin{steps}
+\item first
+\item second
+\item third
+\item fourth
+\item fifth
+\item sixth
+\item seventh
+\end{steps}
+%*********************
+\subsubsection{Amb números del paquet pifont}\label{ssbsec:pifont}
+%******
+Aquesta llista utilitza com a números els predefinits al paquet \verb+pifont+ i que són força interessants. Tanmateix no es pot definir amb el comandament \verb+\newlist+ i cal indicar-ne el codi cada cop que s'utilitza al cos del text.
+
+El codi per generar-la és aquest:
+\begin{scriptsize}
+\begin{verbatim}
+\begin{enumerate}[nolistsep,label=\ding{\value{enumi}},start=202]
+\end{verbatim}
+\end{scriptsize}
+on 202 és el codi del caràcter del paquet \verb+pifont+. Vegeu-ne el resultat:
+
+%%aquest entorn no es deixa definir com a \newlist. Cal posar les opcions al mig del doc
+
+\minisec{Començant pel caràcter 172 \ding{172}}
+\begin{enumerate}[nolistsep,label=\ding{\value{enumi}},start=172]
+\item first
+\item second
+\item third
+\item fourth
+\item fifth
+\item sixth
+\item seventh
+\item eigth
+\item ninth
+\item tenth
+\end{enumerate}
+\minisec{Començant pel caràcter 182 \ding{182}}
+\begin{enumerate}[nolistsep,label=\ding{\value{enumi}},start=182]
+\item  primer
+\item segon
+\item tercer
+\item quart
+\item cinquè
+\item sisè
+\item setè
+\item vuitè
+\item novè
+\item desè
+\end{enumerate}
+
+\minisec{Començant pel caràcter 202 \ding{202}}
+
+\begin{enumerate}[nolistsep,label=\ding{\value{enumi}},start=202]
+\item  primer
+\item segon
+\item tercer
+\item quart
+\item cinquè
+\item sisè
+\item setè
+\item vuitè
+\item novè
+\item desè
+\end{enumerate}
+
+%*******************
+\subsection{Llistes amb vinyetes}\label{sbsec:llistpics}
+%*******************
+\subsubsection{Objectives}\label{ssbsec:objs}
+%******
+Es tracta d'una llista compacta amb vinyetes corresponents a un petit triangle negre (cal cridar el paquet \verb+\usepackage{amssymb}+) d'un sol nivell de profunditat  sagnada a l'esquerra 0.5 cm per indicar objectius. El codi per obtenir-la és:
+\begin{tiny}
+\begin{verbatim}
+\newlist{objectives}{itemize}{1}
+\setlist[objectives]{topsep=0pt,partopsep=0pt,itemsep=0pt,parsep=0pt,labelindent=0.5cm,leftmargin=*}
+\setlist[objectives,1]{label=\tiny$\blacktriangleright$}
+\end{verbatim}
+\end{tiny}
+i el resultat aquest:
+
+\begin{objectives}
+\item  first objective
+\item second objective
+\item third objective
+\item fourth objective
+\end{objectives}
+
+\subsubsection{Atenció}\label{ssbsec:at}
+%******
+Es tracta d'una llista compacta amb vinyetes corresponents a una fletxa (el caràcter 224 del paquet \verb+pifont+) d'un sol nivell de profunditat  sagnada a l'esquerra 0.5 cm per indicar entrades a tenir en compte. El codi per obtenir-la és:
+\begin{tiny}
+\begin{verbatim}
+\newlist{atencio}{itemize}{1}
+\setlist[atencio]{topsep=0pt,partopsep=0pt,itemsep=0pt,parsep=0pt,labelindent=0.5cm,leftmargin=*}
+\setlist[atencio,1]{label=\ding{224}}
+\end{verbatim}
+\end{tiny}
+i el resultat aquest:
+
+\begin{attention}
+\item  first point
+\item second point
+\item third point
+\item fourth point
+\end{attention}
+
+\subsubsection{Points}\label{ssbsec:points}
+%******
+Es tracta d'una llista compacta amb vinyetes corresponents a diversos tipus de punts (els caràcters 110, 108, 72 i 117 del paquet \verb+pifont+), de 4 nivells de profunditat,  sagnada a l'esquerra 0.5 cm per indicar  entrades niuades a tenir en compte. El codi per obtenir-la és:
+\begin{tiny}
+\begin{verbatim}
+\newlist{points}{itemize}{4}
+\setlist[points]{topsep=0pt,partopsep=0pt,itemsep=0pt,parsep=0pt,labelindent=0.5cm,leftmargin=*}
+\setlist[points,1]{label=\tiny\ding{110}}
+\setlist[points,2]{label=\tiny\ding{108}}
+\setlist[points,3]{label=\tiny\ding{72}}
+\setlist[points,4]{label=\tiny\ding{117}}
+\end{verbatim}
+\end{tiny}
+i el resultat aquest:
+\begin{points}
+\item aparells voladors
+	\begin{points}
+		\item biplans
+		\item jets
+		\item de transport
+			\begin{points}
+				\item d'un sol motor
+					\begin{points}
+						\item a reacció
+						\item a hèlix
+					\end{points}
+				\item diferents motors
+			\end{points}
+		\item helicòpters
+	\end{points}
+\item automòbils
+	\begin{points}
+		\item cotxes de carreres
+		\item cotxes privats
+		\item camions
+\end{points}
+\item bicicletes
+\end{points}
+
+\subsubsection{Arrows}\label{ssbsec:arrows}
+%******
+Es tracta d'una llista compacta amb vinyetes corresponents a diversos tipus de fletxa (els caràcters 252, 212, 232 i 217 del paquet \verb+pifont+), de 4 nivells de profunditat,  sagnada a l'esquerra 0.5 cm per indicar  entrades niuades a tenir en compte. El codi per obtenir-la és:
+\begin{tiny}
+\begin{verbatim}
+\newlist{arrows}{itemize}{4}
+\setlist[arrows]{topsep=0pt,partopsep=0pt,itemsep=0pt,parsep=0pt,labelindent=0.5cm,leftmargin=*}
+\setlist[arrows,1]{label=\tiny\ding{252}}
+\setlist[arrows,2]{label=\tiny\ding{212}}
+\setlist[arrows,3]{label=\tiny\ding{232}}
+\setlist[arrows,4]{label=\tiny\ding{217}}
+\end{verbatim}
+\end{tiny}
+i el resultat aquest:
+\begin{arrows}
+\item aparells voladors
+	\begin{arrows}
+		\item biplans
+		\item jets
+		\item de transport
+			\begin{arrows}
+				\item d'un sol motor
+					\begin{arrows}
+						\item a reacció
+						\item a hèlix
+					\end{arrows}
+				\item diferents motors
+			\end{arrows}
+		\item helicòpters
+	\end{arrows}
+\item automòbils
+	\begin{arrows}
+		\item cotxes de carreres
+		\item cotxes privats
+		\item camions
+\end{arrows}
+\item bicicletes
+\end{arrows}
+
+\section{Versos i Citacions}\label{sec:quote}
+%*************************************************************************
+\subsection{Poesia}\label{sbsec:poesia}
+%*******************
+
+Podem escriure poesia utilitzant l'entorn \verb+verse+ que sagna per l'esquerra i també per la dreta. Per dterminar el final d'un vers s'utilitzen dues contrabarres: \verb+\\+ i per separar una estrofa de la següent podem deixar més espai (amb \verb+\bigskip+) o menys, amb  \verb+\medskip+.
+
+
+\begin{verse}
+
+Topant de cap en una i altra soca,\\*
+avançant d'esma pel camí de l'aigua,\\*
+se'n ve la vaca tota sola. És cega.\\*
+\medskip
+
+D'un cop de roc llançat amb massa traça,\\*
+el vailet va buidar-li un ull, i en l'altre\\*
+se li ha posat un tel: la vaca és cega.\\*
+\medskip
+
+Ve a abeurar-se a la font com ans solia,\\*
+mes no amb el posat ferm d'altres vegades\\*
+ni amb ses companyes, no: ve tota sola.\\*
+\medskip
+
+Ses companyes, pels cingles, per les comes,\\*
+pel silenci dels prats i en la ribera,\\*
+fan dringar l'esquellot mentre pasturen\\*
+l'herba fresca a l'atzar\dots Ella cauria.\\*
+\medskip
+
+Topa de morro en l'esmolada pica\\*
+i recula afrontada\dots Però torna,\\*
+i abaixa el cap a l'aigua, i beu calmosa.\\*
+\medskip
+
+Beu poc, sens gaire set. Després aixeca\\*
+al cel, enorme, l'embanyada testa\\*
+amb un gran gesto tràgic; parpelleja\\*
+damunt les mortes nines, i se'n torna\\*
+orfe de llum sota el sol que crema,\\*
+vacil·lant pels camins inoblidables,\\*
+brandant llànguidament la llarga cua.\\*
+\medskip
+\begin{flushright}
+Joan Maragall\\
+Poesies, 1895\\
+\end{flushright}
+\end{verse}
+
+\subsection{Citacions}\label{sbsec:citacio}
+%*******************
+Les citacions es poden fer amb dos entorns diferents:
+\subsubsection{quote}\label{sbsec:quote}
+%*******************
+
+\begin{quote}
+Hi ha gent a qui no agrada que es parle, s’escriga o es pense en català. És la mateixa gent a qui no els agrada que es parle, s’escriga o es pense.
+
+Ovidi Montllor
+\end{quote}
+
+\subsubsection{quotation}\label{sbsec:quotation}
+%*******************
+\begin{quotation}
+Hi ha gent a qui no agrada que es parle, s’escriga o es pense en català. És la mateixa gent a qui no els agrada que es parle, s’escriga o es pense.
+
+Ovidi Montllor
+\end{quotation}
+
+\section{Minisec}\label{sec:minisec}
+%*************************************************************************
+A vegades es desitja un encapçalament que es distingeixi fàcilment però que estigui molt a prop del text, sense massa separació vertical. El comandament \verb+\minisec+ del paquet Koma-Script crea  aquest tipus d'encapçalaments sense cap nivell estructural dins del document. Aquesta minisecció no produeix una entrada en la Taula de continguts ni té cap numeració. 
+
+\minisec{Comandament minisec de Koma-Script}
+\lipsum[1-2]
+
+\section{Taules}\label{sec:taules}
+%*************************************************************************
+
+Tot i que hi ha una llei tipogràfica que diu que a les taules no s'hi han de posar línies verticals, es pot aconseguir un efecte força interessant si aquestes línies verticals no són prou llargues com per tocar les línies horitzontals superior i inferior d'un cel·la. 
+
+Observi's el resultat:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{l|c|c|l}
+\hline
+Dia & Temperatura màx. ºC & Temperatura mín.ºC & Observacions \\
+\hline
+dilluns   & 18 & 8 & Núvols i clarianes. \\
+dimarts   & 17 & 9 & Núvols i clarianes. \\
+dimecres  & 10 & 4 & Clar i ventós. \\
+dijous    &  8 & 2 & Vent de tramuntana, força 5. \\
+divendres &  6 & -2 & Clar i vent fluix. \\
+dissabte  & 4 & -3 & Núvols i clarianes. \\
+diumenge  & 9 & 2 &  Clar i vent fluix. \\
+\hline
+\end{tabular}
+\caption{Taula de temperatures setmanals}\label{tab:temp}
+\end{table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{c|c|c}
+\hline
+Primera columna & Primera columna & Primera columna \\
+\hline
+$a_{1,1}$ & $a_{1,2}$ & $a_{1,3}$ \\
+$a_{2,1}$ & $a_{2,2}$ & $a_{2,3}$ \\
+$a_{3,1}$ & $a_{3,2}$ & $a_{3,3}$ \\
+\hline
+\end{tabular}
+\caption{Taula d'elements ordenats}\label{tab:ordre}
+\end{table}
+
+Ho aconseguim amb l'ús del paquet \verb+colortbl+ que permet acolorir les taules. Aleshores definim el color de les línies, en concret les fem de color gris amb \verb+\arrayrulecolor+, i finalment escurcem l'alçada de les línies:
+
+\begin{verbatim}
+\usepackage{colortbl}
+\arrayrulecolor{gray}
+\let\shline\hline
+\def\hline{\noalign{\vskip3pt}\shline\noalign{\vskip4pt}}
+\end{verbatim}
+
+\section{Marcs}\label{sec:marcs}
+%*************************************************************************
+Amb l'ajut del paquet \verb+bclogo+ es poden crear caixes i marcs amb una imatge o logo, un títol i el cos del text.
+
+El codi emprat és aquest:
+
+\begin{verbatim}
+\usepackage[tikz]{bclogo}
+\newcommand\novaimatge{\includegraphics[width=14pt]{escriu}}
+\renewcommand\logowidth{14pt}
+\end{verbatim}
+
+on \verb+escriu+ és el nom del fitxer d'imatge que apareix a l'esquerra com a logo del marc.
+
+Al cos del marc s'hi pot posar el text que es vulgui, fins i tot llistes com les definides a la secció ~\nameref{sec:llistes} de la pàgina ~\pageref{sec:llistes}.
+
+Vegem-ne un exemple:
+
+\begin{bclogo}[logo=\novaimatge,couleur=gray!30,barre=none,noborder=true,marge=10,ombre=true,couleurOmbre=black!60,blur]%
+{\sffamily{  Objectives}}
+\sffamily\scriptsize
+%\lipsum[1]
+\begin{objectives}
+\item  first objective
+\item second objective
+\item third objective
+\item fourth objective
+\end{objectives}
+\end{bclogo}
+
+
+\chapter{Mostra}\label{cap:mostra}
+\dictum%
+[Albert Einstein]%author
+{Hi ha dues coses infinites: l'Univers i l'estupidesa humana. I de l'Univers no n'estic segur.
+} %text
+\lipsum[2-3]
+\begin{bclogo}[logo=\novaimatge,couleur=gray!30,barre=none,noborder=true,marge=10,ombre=true,couleurOmbre=black!60,blur]%
+{\sffamily{  Objectives}}
+\sffamily\scriptsize
+%\lipsum[1]
+\begin{arrows}
+\item  first objective
+\item second objective
+\item third objective
+\item fourth objective
+\end{arrows}
+\end{bclogo}
+
+
+\lipsum[4]
+%*************************************************************************
+\section{Quarta secció}\label{sec:quarta}
+%*************************************************************************
+\lipsum[1]
+\begin{steps}
+\item  first
+\item  second
+\item  third
+\item  fourth
+\item  fifth
+\item  sixth
+\item  seventh
+\end{steps}
+\subsection{Primera subsecció de la quarta secció}\label{sbsec:primera}
+\lipsum[1-3]
+\begin{quote}
+Hi ha gent a qui no agrada que es parle, s’escriga o es pense en català. És la mateixa gent a qui no els agrada que es parle, s’escriga o es pense.
+
+Ovidi Montllor
+\end{quote}
+\subsection{Segona subsecció de la quarta secció}\label{sbsec:segona}
+\minisec{Comandament minisec de Koma-Script}
+\lipsum[4-5]
+\begin{table}[h]
+\centering\scriptsize
+\begin{tabular}{l|c|c|l}
+\hline
+Dia & Temperatura màx. ºC & Temperatura mín.ºC & Observacions \\
+\hline
+dilluns   & 18 & 8 & Núvols i clarianes. \\
+dimarts   & 17 & 9 & Núvols i clarianes. \\
+dimecres  & 10 & 4 & Clar i ventós. \\
+dijous    &  8 & 2 & Vent de tramuntana, força 5. \\
+divendres &  6 & -2 & Clar i vent fluix. \\
+dissabte  & 4 & -3 & Núvols i clarianes. \\
+diumenge  & 9 & 2 &  Clar i vent fluix. \\
+\hline
+\end{tabular}
+\caption{Taula de temperatures setmanals}\label{tab:temp2}
+\end{table}
+\lipsum[8-9]
+\end{document}
+
+
+
+\begin{tiny}
+\begin{verbatim}
+
+\end{verbatim}
+\end{tiny}
+
+
+
+
+
+\titleformat{\section}[block]%              
+    {\usekomafont{sectioning}\usekomafont{section}%
+     \tikz[overlay]\shade[left color=blue!20,right color=white](0,-1ex)rectangle(\textwidth,1em);}%    
+    {\thesection}%                   
+    {1em}%
+    {}
+    
+    
+    
+         \begin{pgfonlayer}{background}
+            \shade[left color=blue!20,right color=white]let \p1=(counter.north),\p2=(content.north)in            (0,{max(\y1,\y2)})rectangle(content.south east);
+        \end{pgfonlayer}
