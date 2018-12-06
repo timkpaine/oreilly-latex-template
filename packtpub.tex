@@ -329,7 +329,7 @@ In this document we have predetermined a series of lists that we think can be us
 %*******************
 \subsubsection{Steps}\label{ssbsec:steps}
 %******
-Es tracta d'una llista compacta numerada en esquema (1. - 1.1 - 1.1.1 ) sagnada a l'esquerra 0.5 cm per indicar passos. El codi per obtenir-la és:
+It is a compact list numbered in the scheme (1. - 1.1 - 1.1.1) indented to the left 0.5 cm to indicate steps. The code to get it is:
 \begin{tiny}
 \begin{verbatim}
 \newlist{steps}{enumerate}{4}
@@ -340,8 +340,8 @@ Es tracta d'una llista compacta numerada en esquema (1. - 1.1 - 1.1.1 ) sagnada 
 \setlist[steps,4]{label*=\arabic*.}
 \end{verbatim}
 \end{tiny}
-i el resultat aquest:
-\begin{steps}
+and the result this:
+ \begin{steps}
 \item first
 \item second
 \item third
@@ -351,21 +351,21 @@ i el resultat aquest:
 \item seventh
 \end{steps}
 %*********************
-\subsubsection{Amb números del paquet pifont}\label{ssbsec:pifont}
+\subsubsection{With numbers from the pifont package}\label{ssbsec:pifont}
 %******
-Aquesta llista utilitza com a números els predefinits al paquet \verb+pifont+ i que són força interessants. Tanmateix no es pot definir amb el comandament \verb+\newlist+ i cal indicar-ne el codi cada cop que s'utilitza al cos del text.
+This list uses predefined numbers in the package \verb+pifont+ and which are quite interesting. However it can not be defined with the \verb+\newlist+ command and the code must be indicated each time it is used in the body of the text.
 
-El codi per generar-la és aquest:
+The code to generate it is this:
 \begin{scriptsize}
 \begin{verbatim}
 \begin{enumerate}[nolistsep,label=\ding{\value{enumi}},start=202]
 \end{verbatim}
 \end{scriptsize}
-on 202 és el codi del caràcter del paquet \verb+pifont+. Vegeu-ne el resultat:
+where 202 is the character code of the package \verb+pifont+. See the result:
 
-%%aquest entorn no es deixa definir com a \newlist. Cal posar les opcions al mig del doc
+%% this environment is not allowed to be defined as a \ newlist. You have to put the options in the middle of the doc
 
-\minisec{Començant pel caràcter 172 \ding{172}}
+\minisec{Starting with character 172 \ding{172}}
 \begin{enumerate}[nolistsep,label=\ding{\value{enumi}},start=172]
 \item first
 \item second
@@ -378,41 +378,41 @@ on 202 és el codi del caràcter del paquet \verb+pifont+. Vegeu-ne el resultat:
 \item ninth
 \item tenth
 \end{enumerate}
-\minisec{Començant pel caràcter 182 \ding{182}}
+\minisec{Starting with character 182 \ding{182}}
 \begin{enumerate}[nolistsep,label=\ding{\value{enumi}},start=182]
-\item  primer
-\item segon
-\item tercer
-\item quart
-\item cinquè
-\item sisè
-\item setè
-\item vuitè
-\item novè
-\item desè
+\item first
+\item second
+\item third
+\item fourth
+\item fifth
+\item sixth
+\item seventh
+\item eigth
+\item ninth
+\item tenth
 \end{enumerate}
 
-\minisec{Començant pel caràcter 202 \ding{202}}
+\minisec{Starting with character 202 \ding{202}}
 
 \begin{enumerate}[nolistsep,label=\ding{\value{enumi}},start=202]
-\item  primer
-\item segon
-\item tercer
-\item quart
-\item cinquè
-\item sisè
-\item setè
-\item vuitè
-\item novè
-\item desè
+\item first
+\item second
+\item third
+\item fourth
+\item fifth
+\item sixth
+\item seventh
+\item eigth
+\item ninth
+\item tenth
 \end{enumerate}
 
 %*******************
-\subsection{Llistes amb vinyetes}\label{sbsec:llistpics}
+\subsection{Bulleted lists}\label{sbsec:bullist}
 %*******************
 \subsubsection{Objectives}\label{ssbsec:objs}
 %******
-Es tracta d'una llista compacta amb vinyetes corresponents a un petit triangle negre (cal cridar el paquet \verb+\usepackage{amssymb}+) d'un sol nivell de profunditat  sagnada a l'esquerra 0.5 cm per indicar objectius. El codi per obtenir-la és:
+It is a compact list with vignettes corresponding to a small black triangle (it is necessary to call the package \verb+\usepackage {amssymb}+) of a single level of depth indented to the left 0.5 cm to indicate objectives. The code to get it is:
 \begin{tiny}
 \begin{verbatim}
 \newlist{objectives}{itemize}{1}
@@ -420,7 +420,7 @@ Es tracta d'una llista compacta amb vinyetes corresponents a un petit triangle n
 \setlist[objectives,1]{label=\tiny$\blacktriangleright$}
 \end{verbatim}
 \end{tiny}
-i el resultat aquest:
+and the result this:
 
 \begin{objectives}
 \item  first objective
@@ -429,9 +429,9 @@ i el resultat aquest:
 \item fourth objective
 \end{objectives}
 
-\subsubsection{Atenció}\label{ssbsec:at}
+\subsubsection{Attention}\label{ssbsec:at}
 %******
-Es tracta d'una llista compacta amb vinyetes corresponents a una fletxa (el caràcter 224 del paquet \verb+pifont+) d'un sol nivell de profunditat  sagnada a l'esquerra 0.5 cm per indicar entrades a tenir en compte. El codi per obtenir-la és:
+It is a compact list with bullets corresponding to an arrow (the character 224 of the package \ verb + pifont +) of a single depth level indented to the left 0.5 cm to indicate entries to be taken into account. The code to get it is:
 \begin{tiny}
 \begin{verbatim}
 \newlist{atencio}{itemize}{1}
@@ -439,7 +439,7 @@ Es tracta d'una llista compacta amb vinyetes corresponents a una fletxa (el car�
 \setlist[atencio,1]{label=\ding{224}}
 \end{verbatim}
 \end{tiny}
-i el resultat aquest:
+and the result this:
 
 \begin{attention}
 \item  first point
@@ -450,7 +450,8 @@ i el resultat aquest:
 
 \subsubsection{Points}\label{ssbsec:points}
 %******
-Es tracta d'una llista compacta amb vinyetes corresponents a diversos tipus de punts (els caràcters 110, 108, 72 i 117 del paquet \verb+pifont+), de 4 nivells de profunditat,  sagnada a l'esquerra 0.5 cm per indicar  entrades niuades a tenir en compte. El codi per obtenir-la és:
+It is a compact list with vignettes corresponding to various types of points (the characters 110, 108, 72 and 117 of the package \verb+pifont+), of 4 levels of depth, indented to the left 0.5 cm to indicate nested entries to keep in mind. The code to get it is:
+
 \begin{tiny}
 \begin{verbatim}
 \newlist{points}{itemize}{4}
@@ -461,35 +462,35 @@ Es tracta d'una llista compacta amb vinyetes corresponents a diversos tipus de p
 \setlist[points,4]{label=\tiny\ding{117}}
 \end{verbatim}
 \end{tiny}
-i el resultat aquest:
+and the result this:
 \begin{points}
-\item aparells voladors
+\item flying devices
 	\begin{points}
-		\item biplans
+		\item biplanes
 		\item jets
-		\item de transport
+		\item of transport
 			\begin{points}
-				\item d'un sol motor
+				\item of a single engine
 					\begin{points}
-						\item a reacció
-						\item a hèlix
+						\item to reaction
+						\item to helix
 					\end{points}
-				\item diferents motors
+				\item different motors
 			\end{points}
-		\item helicòpters
+		\item helicopters
 	\end{points}
-\item automòbils
+\item automobiles
 	\begin{points}
-		\item cotxes de carreres
-		\item cotxes privats
-		\item camions
+		\item racing cars
+		\item private cars
+		\item trucks
 \end{points}
-\item bicicletes
+\item bicycles
 \end{points}
 
 \subsubsection{Arrows}\label{ssbsec:arrows}
 %******
-Es tracta d'una llista compacta amb vinyetes corresponents a diversos tipus de fletxa (els caràcters 252, 212, 232 i 217 del paquet \verb+pifont+), de 4 nivells de profunditat,  sagnada a l'esquerra 0.5 cm per indicar  entrades niuades a tenir en compte. El codi per obtenir-la és:
+It is a compact list with vignettes corresponding to various types of arrows (252, 212, 232 and 217 characters of the package \verb+pifont+), with 4 levels of depth, indented to the left 0.5 cm to indicate nested entries to keep in mind. The code to get it is:
 \begin{tiny}
 \begin{verbatim}
 \newlist{arrows}{itemize}{4}
@@ -500,75 +501,74 @@ Es tracta d'una llista compacta amb vinyetes corresponents a diversos tipus de f
 \setlist[arrows,4]{label=\tiny\ding{217}}
 \end{verbatim}
 \end{tiny}
-i el resultat aquest:
+and the result this:
+
 \begin{arrows}
-\item aparells voladors
+\item flying devices
 	\begin{arrows}
-		\item biplans
+		\item biplanes
 		\item jets
-		\item de transport
+		\item of transport
 			\begin{arrows}
-				\item d'un sol motor
+				\item of a single engine
 					\begin{arrows}
-						\item a reacció
-						\item a hèlix
+						\item to reaction
+						\item to helix
 					\end{arrows}
-				\item diferents motors
+				\item different motors
 			\end{arrows}
-		\item helicòpters
+		\item helicopters
 	\end{arrows}
-\item automòbils
+\item automobiles
 	\begin{arrows}
-		\item cotxes de carreres
-		\item cotxes privats
-		\item camions
+		\item racing cars
+		\item private cars
+		\item trucks
 \end{arrows}
-\item bicicletes
+\item bicycles
 \end{arrows}
 
-\section{Versos i Citacions}\label{sec:quote}
+\section{Verses and Citations}\label{sec:quote}
 %*************************************************************************
-\subsection{Poesia}\label{sbsec:poesia}
+\subsection{Poetry}\label{sbsec:poetry}
 %*******************
 
-Podem escriure poesia utilitzant l'entorn \verb+verse+ que sagna per l'esquerra i també per la dreta. Per dterminar el final d'un vers s'utilitzen dues contrabarres: \verb+\\+ i per separar una estrofa de la següent podem deixar més espai (amb \verb+\bigskip+) o menys, amb  \verb+\medskip+.
-
+We can write poetry using the \verb+verse+ environment that bleeds to the left and also to the right. To terminate the end of a verse two counter-turns are used: \verb+\\+ i to separate a stanza from the following we can leave more space (with \verb+\bigskip+) or less, with \verb+\medskip+.
 
 \begin{verse}
-
-Topant de cap en una i altra soca,\\*
-avançant d'esma pel camí de l'aigua,\\*
-se'n ve la vaca tota sola. És cega.\\*
+Touching head in both sides, \\*
+moving forward along the water path, \\*
+the cow is alone. It's blind. \\*
 \medskip
 
-D'un cop de roc llançat amb massa traça,\\*
-el vailet va buidar-li un ull, i en l'altre\\*
-se li ha posat un tel: la vaca és cega.\\*
+From a rocket thrown with too much trace, \\*
+the vailet cleared her an eye, and in the other \\*
+He has been given a phone: the cow is blind. \\*
 \medskip
 
-Ve a abeurar-se a la font com ans solia,\\*
-mes no amb el posat ferm d'altres vegades\\*
-ni amb ses companyes, no: ve tota sola.\\*
+Go over to the source as usual, \\*
+but not with the stubbornness of other times \\*
+nor with your companions, no: comes alone. \\*
 \medskip
 
-Ses companyes, pels cingles, per les comes,\\*
-pel silenci dels prats i en la ribera,\\*
-fan dringar l'esquellot mentre pasturen\\*
-l'herba fresca a l'atzar\dots Ella cauria.\\*
+Their companions, by the cliffs, by the commas, \\*
+due to the silence of the meadows and the riverside, \\*
+they make the skeleton cling while grazing \\*
+fresh grass at random \ dots She would fall. \\*
 \medskip
 
-Topa de morro en l'esmolada pica\\*
-i recula afrontada\dots Però torna,\\*
-i abaixa el cap a l'aigua, i beu calmosa.\\*
+Muzzle top in the crushed sink \\*
+and faces back \ dots But returns, \\*
+and lower your head to the water, and drink calm. \\*
 \medskip
 
-Beu poc, sens gaire set. Després aixeca\\*
-al cel, enorme, l'embanyada testa\\*
-amb un gran gesto tràgic; parpelleja\\*
-damunt les mortes nines, i se'n torna\\*
-orfe de llum sota el sol que crema,\\*
-vacil·lant pels camins inoblidables,\\*
-brandant llànguidament la llarga cua.\\*
+Drink little, not very thirsty. Then raise \\*
+to the sky, huge, the embroidered forehead \\*
+with a great tragic gesture; blinks \\*
+Over the dead dolls, and it returns \\*
+orphan of light under the sun that burns, \\*
+hesitating for unforgettable paths, \\*
+Flaking the long tail gently. \\*
 \medskip
 \begin{flushright}
 Joan Maragall\\
@@ -576,14 +576,14 @@ Poesies, 1895\\
 \end{flushright}
 \end{verse}
 
-\subsection{Citacions}\label{sbsec:citacio}
+\subsection{Citacions}\label{sbsec:citations}
 %*******************
-Les citacions es poden fer amb dos entorns diferents:
+Citation can be done with two different environments:
 \subsubsection{quote}\label{sbsec:quote}
 %*******************
 
 \begin{quote}
-Hi ha gent a qui no agrada que es parle, s’escriga o es pense en català. És la mateixa gent a qui no els agrada que es parle, s’escriga o es pense.
+There are people who do not like to speak, write or think in Catalan. It is the same people who do not like to talk, write or think.
 
 Ovidi Montllor
 \end{quote}
@@ -591,58 +591,58 @@ Ovidi Montllor
 \subsubsection{quotation}\label{sbsec:quotation}
 %*******************
 \begin{quotation}
-Hi ha gent a qui no agrada que es parle, s’escriga o es pense en català. És la mateixa gent a qui no els agrada que es parle, s’escriga o es pense.
+There are people who do not like to speak, write or think in Catalan. It is the same people who do not like to talk, write or think.
 
 Ovidi Montllor
 \end{quotation}
 
 \section{Minisec}\label{sec:minisec}
 %*************************************************************************
-A vegades es desitja un encapçalament que es distingeixi fàcilment però que estigui molt a prop del text, sense massa separació vertical. El comandament \verb+\minisec+ del paquet Koma-Script crea  aquest tipus d'encapçalaments sense cap nivell estructural dins del document. Aquesta minisecció no produeix una entrada en la Taula de continguts ni té cap numeració. 
+Sometimes you want a header that is easily distinguished but that is very close to the text, without too much vertical separation. The command \verb+\minisec+ of the Koma-Script package creates this type of heading without any structural level within the document. This minisection does not produce an entry in the Table of Contents nor has any numbering.
 
-\minisec{Comandament minisec de Koma-Script}
+\minisec{Minisec command of Koma-Script}
 \lipsum[1-2]
 
-\section{Taules}\label{sec:taules}
+\section{Tables}\label{sec:tables}
 %*************************************************************************
 
-Tot i que hi ha una llei tipogràfica que diu que a les taules no s'hi han de posar línies verticals, es pot aconseguir un efecte força interessant si aquestes línies verticals no són prou llargues com per tocar les línies horitzontals superior i inferior d'un cel·la. 
+Although there is a typographical law that says that vertical lines do not have to be placed in the tables, a very interesting effect can be achieved if these vertical lines are not long enough to touch the upper and lower horizontal lines, a cell
 
-Observi's el resultat:
+Observe the result:
 
 \begin{table}[h]
 \centering
 \begin{tabular}{l|c|c|l}
 \hline
-Dia & Temperatura màx. ºC & Temperatura mín.ºC & Observacions \\
+Day & Max Temperature ºC & Temperature min. C & Observations \\
 \hline
-dilluns   & 18 & 8 & Núvols i clarianes. \\
-dimarts   & 17 & 9 & Núvols i clarianes. \\
-dimecres  & 10 & 4 & Clar i ventós. \\
-dijous    &  8 & 2 & Vent de tramuntana, força 5. \\
-divendres &  6 & -2 & Clar i vent fluix. \\
-dissabte  & 4 & -3 & Núvols i clarianes. \\
-diumenge  & 9 & 2 &  Clar i vent fluix. \\
+Monday & 18 & 8 & Clouds and clearings. \\
+Tuesday & 17 & 9 & Clouds and clearings. \\
+Wednesdays & 10 & 4 & Clear and windy. \\
+Thursday & 8 & 2 & Tramuntana wind, force 5. \\
+Friday & 6 & -2 & Clear and shallow wind. \\
+Saturday & 4 & -3 & Clouds and clearings. \\
+Sunday & 9 & 2 & Clear and shallow wind. \\
 \hline
 \end{tabular}
-\caption{Taula de temperatures setmanals}\label{tab:temp}
+\caption{Table of weekly temperatures}\label{tab:temp}
 \end{table}
 
 \begin{table}[h]
 \centering
 \begin{tabular}{c|c|c}
 \hline
-Primera columna & Primera columna & Primera columna \\
+First column and First column and First column \\
 \hline
 $a_{1,1}$ & $a_{1,2}$ & $a_{1,3}$ \\
 $a_{2,1}$ & $a_{2,2}$ & $a_{2,3}$ \\
 $a_{3,1}$ & $a_{3,2}$ & $a_{3,3}$ \\
 \hline
 \end{tabular}
-\caption{Taula d'elements ordenats}\label{tab:ordre}
+\caption{Table of ordered items}\label{tab:ordre}
 \end{table}
 
-Ho aconseguim amb l'ús del paquet \verb+colortbl+ que permet acolorir les taules. Aleshores definim el color de les línies, en concret les fem de color gris amb \verb+\arrayrulecolor+, i finalment escurcem l'alçada de les línies:
+We do this by using the \verb+colortbl+ package that allows you to color the tables. Then we define the color of the lines, in particular we make them gray with \verb+\arrayrulecolor+, and finally shorten the height of the lines:
 
 \begin{verbatim}
 \usepackage{colortbl}
@@ -651,11 +651,11 @@ Ho aconseguim amb l'ús del paquet \verb+colortbl+ que permet acolorir les taule
 \def\hline{\noalign{\vskip3pt}\shline\noalign{\vskip4pt}}
 \end{verbatim}
 
-\section{Marcs}\label{sec:marcs}
+\section{Frames}\label{sec:frames}
 %*************************************************************************
-Amb l'ajut del paquet \verb+bclogo+ es poden crear caixes i marcs amb una imatge o logo, un títol i el cos del text.
+With the help of the package \verb+bclogo+ you can create boxes and frames with an image or logo, a title and the body of the text.
 
-El codi emprat és aquest:
+The code used is this:
 
 \begin{verbatim}
 \usepackage[tikz]{bclogo}
@@ -663,11 +663,11 @@ El codi emprat és aquest:
 \renewcommand\logowidth{14pt}
 \end{verbatim}
 
-on \verb+escriu+ és el nom del fitxer d'imatge que apareix a l'esquerra com a logo del marc.
+where \verb+write+ is the name of the image file that appears to the left as the logo of the frame.
 
-Al cos del marc s'hi pot posar el text que es vulgui, fins i tot llistes com les definides a la secció ~\nameref{sec:llistes} de la pàgina ~\pageref{sec:llistes}.
+In the body of the frame you can put the desired text, even lists such as those defined in the section ~\nameref {sec: lists} on page ~\pageref {sec: lists}.
 
-Vegem-ne un exemple:
+Let's see an example:
 
 \begin{bclogo}[logo=\novaimatge,couleur=gray!30,barre=none,noborder=true,marge=10,ombre=true,couleurOmbre=black!60,blur]%
 {\sffamily{  Objectives}}
@@ -682,10 +682,10 @@ Vegem-ne un exemple:
 \end{bclogo}
 
 
-\chapter{Mostra}\label{cap:mostra}
+\chapter{Show}\label{cap:show}
 \dictum%
 [Albert Einstein]%author
-{Hi ha dues coses infinites: l'Univers i l'estupidesa humana. I de l'Univers no n'estic segur.
+{There are two infinite things: the Universe and human stupidity. And I'm not sure about the Universe.
 } %text
 \lipsum[2-3]
 \begin{bclogo}[logo=\novaimatge,couleur=gray!30,barre=none,noborder=true,marge=10,ombre=true,couleurOmbre=black!60,blur]%
@@ -703,7 +703,7 @@ Vegem-ne un exemple:
 
 \lipsum[4]
 %*************************************************************************
-\section{Quarta secció}\label{sec:quarta}
+\section{Fourth section}\label{sec:fourth}
 %*************************************************************************
 \lipsum[1]
 \begin{steps}
@@ -715,32 +715,32 @@ Vegem-ne un exemple:
 \item  sixth
 \item  seventh
 \end{steps}
-\subsection{Primera subsecció de la quarta secció}\label{sbsec:primera}
+\subsection{First subsection of the fourth section}\label{sbsec:first}
 \lipsum[1-3]
 \begin{quote}
-Hi ha gent a qui no agrada que es parle, s’escriga o es pense en català. És la mateixa gent a qui no els agrada que es parle, s’escriga o es pense.
+There are people who do not like to speak, write or think in Catalan. It is the same people who do not like to talk, write or think.
 
 Ovidi Montllor
 \end{quote}
-\subsection{Segona subsecció de la quarta secció}\label{sbsec:segona}
-\minisec{Comandament minisec de Koma-Script}
+\subsection{Second subsection of the fourth section}\label{sbsec:second}
+\minisec{Minisec Command of Koma-Script}
 \lipsum[4-5]
 \begin{table}[h]
 \centering\scriptsize
 \begin{tabular}{l|c|c|l}
 \hline
-Dia & Temperatura màx. ºC & Temperatura mín.ºC & Observacions \\
-\hline
-dilluns   & 18 & 8 & Núvols i clarianes. \\
-dimarts   & 17 & 9 & Núvols i clarianes. \\
-dimecres  & 10 & 4 & Clar i ventós. \\
-dijous    &  8 & 2 & Vent de tramuntana, força 5. \\
-divendres &  6 & -2 & Clar i vent fluix. \\
-dissabte  & 4 & -3 & Núvols i clarianes. \\
-diumenge  & 9 & 2 &  Clar i vent fluix. \\
+Day & Max Temperature ºC & Temperature min. C & Observations \\
+\ hline
+Monday & 18 & 8 & Clouds and clearings. \\
+Tuesday & 17 & 9 & Clouds and clearings. \\
+Wednesdays & 10 & 4 & Clear and windy. \\
+Thursday & 8 & 2 & Tramuntana wind, force 5. \\
+Friday & 6 & -2 & Clear and shallow wind. \\
+Saturday & 4 & -3 & Clouds and clearings. \\
+Sunday & 9 & 2 & Clear and shallow wind. \\
 \hline
 \end{tabular}
-\caption{Taula de temperatures setmanals}\label{tab:temp2}
+\caption{Table of weekly temperatures}\label{tab:temp2}
 \end{table}
 \lipsum[8-9]
 \end{document}
